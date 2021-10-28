@@ -3,7 +3,7 @@
 // Author      : Shorouk Abdelhalim
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : DRAM trace generator for testing in C++, Ansi-style
 //============================================================================
 
 #include <iostream>
@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 
 	}
 
-	//printf("address_width: %d\naddress_mapping:\nnum_requests: %d\naddress_pattern: %s\ntype_pattern: %s\noutfile: %s\n",address_width,address_mapping, num_requests,address_pattern,type_pattern ,output_file);
+	printf("address_width: %d\naddress_mapping: %s\nnum_requests: %d\naddress_pattern: %s\ntype_pattern: %s\noutfile: %s\n",address_width,address_mapping, num_requests,address_pattern,type_pattern ,output_file);
 	//printf("column_mask: %llx, row_mask: %llx, bank_mask: %llx\n", column_mask, row_mask, bank_mask);
 
 	FILE * pFile;
@@ -220,7 +220,7 @@ int main(int argc, char *argv[]) {
 			}
 		}
 
-	printf("Please check the output file\n");
+	printf("\nPlease check the output file\n");
 
 
 	return 0;
