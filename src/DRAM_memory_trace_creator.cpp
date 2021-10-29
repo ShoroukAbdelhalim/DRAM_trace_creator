@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 
 	int address_width = 64;
 	int num_requests = 1000;
-	int offset_bits = 6;
+	int offset_bits = 0;
 	int column_bits = 10;
 	int row_bits = 15;
 	int bank_bits = 3;
@@ -81,8 +81,8 @@ int main(int argc, char *argv[]) {
 		} else if (!strcmp(arg, "-p")){
 			i++;
 			strcpy(address_pattern, argv[i]);
-			if (strcmp(address_pattern, "hit") && strcmp(address_pattern, "conflict") && strcmp(address_pattern,"random") && strcmp(address_pattern, "linear") ){
-				printf("Invalid address_pattern: it should be hit [all row hit] or conflict [all row conflicts] or random [random rows] or linear [sequential rows]\n");
+			if (strcmp(address_pattern, "hit") && strcmp(address_pattern, "conflict") && strcmp(address_pattern,"random") && strcmp(address_pattern, "seq") ){
+				printf("Invalid address_pattern: it should be hit [all row hit] or conflict [all row conflicts] or random [random rows] or seq [sequential rows]\n");
 				return 1;
 			}
 
@@ -112,7 +112,7 @@ int main(int argc, char *argv[]) {
 
 		for (int i=0;i<num_requests;i++){
 			// create linear addresses and print it in the file
-			if (!strcmp(address_pattern,"linear")){
+			if (!strcmp(address_pattern,"seq")){
 				if (!strcmp(type_pattern,"rd"))
 					fprintf(pFile,"0x%.8llx READ 0\n",address);
 				else if (!strcmp(type_pattern,"wr"))
@@ -157,6 +157,7 @@ int main(int argc, char *argv[]) {
 					}
 
 				}
+				address = 0;
 
 			}
 
@@ -188,6 +189,7 @@ int main(int argc, char *argv[]) {
 					}
 
 				}
+				address = 0;
 
 			}
 
